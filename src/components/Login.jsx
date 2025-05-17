@@ -1,48 +1,52 @@
 import { useState } from 'react';
 import { supabase } from '../supabaseClient';
-import logo from './logo.png';
+import logo from '../components/logo.png';
 import './login.css';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = async (e) => {
+  async function handleLogin(e) {
     e.preventDefault();
-    const { error } = await supabase.auth.signInWithPassword({
+    await supabase.auth.signInWithPassword({
       email,
-      password
+      password,
     });
-    if (error) alert(error.message);
-  };
+  }
 
   return (
     <div className="login-wrapper">
-      <img src={logo} alt="Helsingbuss logo" className="logo" />
-      <div className="login-box">
-        <form onSubmit={handleLogin}>
-          <input
-            type="email"
-            placeholder="E-postadress"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <input
-            type="password"
-            placeholder="Lösenord"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <div className="button-group">
-            <button type="submit">Logga in</button>
-            <a href="#">Glömt lösenordet</a>
-          </div>
-        </form>
-        <p className="version-text">
-          version 0.1 skapad av Xellens Agency byggd till Helsingbuss
-        </p>
+      <img src={logo} alt="Helsingbuss Logo" className="login-logo" />
+
+      <form onSubmit={handleLogin} className="login-form">
+        <input
+          type="email"
+          placeholder="E-postadress"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Lösenord"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+
+        <div className="button-group">
+          <button type="submit" className="login-button">
+            Logga in
+          </button>
+          <a href="#" className="forgot-password">
+            Glömt lösenordet
+          </a>
+        </div>
+      </form>
+
+      <div className="login-footer">
+        version 0.1 skapad av Xellens Agency byggd till Helsingbuss
       </div>
     </div>
   );
