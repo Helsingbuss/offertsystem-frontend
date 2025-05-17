@@ -1,66 +1,82 @@
+/* src/components/login.css */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f9faf4;
+  font-family: 'Arial', sans-serif;
+}
+
 .login-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   height: 100vh;
-  background-color: #f8f9f2;
+  padding: 1rem;
+}
+
+.logo {
+  max-width: 220px;
+  margin-bottom: 1rem;
 }
 
 .login-box {
-  background-color: white;
+  background-color: #fff;
   padding: 2rem;
-  border-radius: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 1.5rem;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
   width: 100%;
   max-width: 420px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 1rem;
+  box-sizing: border-box;
 }
 
-.logo {
-  max-width: 270px;
-  height: 59px;
-  margin-bottom: 1.5rem;
-}
-
-input {
+input[type="email"],
+input[type="password"] {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 1rem;
+  font-size: 1rem;
   width: 100%;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  border-radius: 12px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-  background-color: #f8f8f8;
+  box-sizing: border-box;
 }
 
-.login-actions {
+.login-buttons {
   display: flex;
-  gap: 0.5rem;
-  width: 100%;
-  margin-top: 1rem;
   justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
 }
 
 button {
-  flex: 1;
-  padding: 0.8rem 1rem;
-  background-color: #14495e;
+  background-color: #0d3b4d;
   color: white;
+  padding: 0.6rem 1.4rem;
   border: none;
-  border-radius: 999px;
-  font-size: 14px;
+  border-radius: 1.5rem;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.2s;
 }
 
 button:hover {
-  background-color: #0e3342;
+  background-color: #0b2f3d;
 }
 
-.login-footer {
-  margin-top: 1rem;
-  font-size: 10px;
-  color: #444;
+.forgot-link {
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: #0d3b4d;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+}
+
+.version {
+  margin-top: 1.5rem;
+  font-size: 0.7rem;
   text-align: center;
+  color: #555;
 }
