@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { supabase } from "../supabaseClient";
-import logo from "./logo.png";
 import './Login.css';
+import logo from './logo.png'; // Om logo.png ligger i samma mapp
 
 export default function Login() {
   const [email, setEmail] = useState("");
