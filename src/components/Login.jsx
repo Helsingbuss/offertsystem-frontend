@@ -1,53 +1,43 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { supabase } from '../supabaseClient';
-import logo from '../components/logo.png';
+import logo from './logo.png';
 import './login.css';
 
-export default function Login() {
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  async function handleLogin(e) {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
-  }
+    await supabase.auth.signInWithPassword({ email, password });
+  };
 
   return (
     <div className="login-wrapper">
-      <img src={logo} alt="Helsingbuss Logo" className="login-logo" />
-
+      <img src={logo} alt="Helsingbuss logo" className="login-logo" />
       <form onSubmit={handleLogin} className="login-form">
         <input
           type="email"
           placeholder="E-postadress"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          required
         />
         <input
           type="password"
           placeholder="Lösenord"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          required
         />
-
         <div className="button-group">
-          <button type="submit" className="login-button">
-            Logga in
-          </button>
-          <a href="#" className="forgot-password">
-            Glömt lösenordet
-          </a>
+          <button type="submit" className="login-button">Logga in</button>
+          <a href="#" className="forgot-password">Glömt lösenordet</a>
         </div>
       </form>
-
-      <div className="login-footer">
+      <p className="login-footer">
         version 0.1 skapad av Xellens Agency byggd till Helsingbuss
-      </div>
+      </p>
     </div>
   );
-}
+};
+
+export default Login;
