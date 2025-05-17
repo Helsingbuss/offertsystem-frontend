@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Login from "./pages/Login";
+import Login from "./components/Login";
 import Dashboard from "./pages/Dashboard";
 import BergkvaraDashboard from "./pages/BergkvaraDashboard";
 
