@@ -1,5 +1,4 @@
-// src/components/Login.jsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { supabase } from '../supabaseClient';
 import logo from './logo.png';
 import './login.css';
@@ -10,14 +9,18 @@ export default function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    await supabase.auth.signInWithPassword({ email, password });
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password
+    });
+    if (error) alert(error.message);
   };
 
   return (
-    <div className="login-page">
-      <div className="login-container">
-        <img src={logo} alt="Helsingbuss" className="login-logo" />
-        <form onSubmit={handleLogin} className="login-form">
+    <div className="login-wrapper">
+      <img src={logo} alt="Helsingbuss logo" className="logo" />
+      <div className="login-box">
+        <form onSubmit={handleLogin}>
           <input
             type="email"
             placeholder="E-postadress"
@@ -32,12 +35,12 @@ export default function Login() {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <div className="login-actions">
+          <div className="button-group">
             <button type="submit">Logga in</button>
-            <a href="#" className="forgot-password">Glömt lösenordet</a>
+            <a href="#">Glömt lösenordet</a>
           </div>
         </form>
-        <p className="login-footer">
+        <p className="version-text">
           version 0.1 skapad av Xellens Agency byggd till Helsingbuss
         </p>
       </div>
