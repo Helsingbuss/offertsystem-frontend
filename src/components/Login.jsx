@@ -7,39 +7,42 @@ import './login.css';
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(null);
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    setError(error ? error.message : null);
+    await supabase.auth.signInWithPassword({ email, password });
   };
 
   return (
     <div className="login-container">
-      <form onSubmit={handleLogin} className="login-box">
-        <img src={logo} alt="Logo" className="login-logo" />
+      <div className="login-card">
+        <img src={logo} alt="Logo" className="logo" />
+        <h1 className="brand-text">bergkvara</h1>
+
         <input
           type="email"
           placeholder="E-postadress"
-          className="login-input"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          required
+          className="login-input"
         />
         <input
           type="password"
           placeholder="Lösenord"
-          className="login-input"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          required
+          className="login-input"
         />
-        <button type="submit" className="login-button">Logga in</button>
-        {error && <p className="login-error">{error}</p>}
-        <p className="login-forgot">Glömt lösenord?</p>
-        <p className="login-footer">Bergkvara Buss Offertsystem</p>
-      </form>
+
+        <div className="login-buttons">
+          <button onClick={handleLogin} className="login-btn">Logga in</button>
+          <button className="forgot-btn">Glömt lösenordet</button>
+        </div>
+
+        <p className="footer-text">
+          version 0.1 skapad av Xellens Agency byggd till Helsingbuss
+        </p>
+      </div>
     </div>
   );
 }
