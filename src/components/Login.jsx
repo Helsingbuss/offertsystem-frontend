@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { supabase } from '../supabaseClient';
-import logo from './logo.png'; // ✅ för Login.jsx
+import logo from './logo.png'
 
 
 export default function Login() {
