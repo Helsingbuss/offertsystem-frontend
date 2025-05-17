@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { supabase } from '../supabaseClient';
 import logo from '../components/logo.png';
-import './Login.css';
+import './login.css';
 
 export default function Login() {
   const [email, setEmail] = useState('');
