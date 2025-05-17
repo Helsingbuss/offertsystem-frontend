@@ -18,7 +18,8 @@ body {
 .login-logo {
   width: 270px;
   height: 59px;
-  margin-bottom: 20px;
+  object-fit: contain;
+  margin-bottom: 1rem;
 }
 
 .login-form {
